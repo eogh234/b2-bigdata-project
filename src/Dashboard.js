@@ -1,28 +1,36 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
+import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
-import MenuIcon from '@material-ui/icons/Menu';
+import List from '@material-ui/core/List';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import clsx from 'clsx';
+import React, { useState } from 'react';
+import { AwesomeButton } from "react-awesome-button";
 import Chart from './Chart';
 import Deposits from './Deposits';
-import Orders from './Orders';
-import { Image } from '@material-ui/icons';
+import Test2 from './Test2';
+import { mainListItems, secondaryListItems } from './listItems';
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -37,6 +45,15 @@ function Copyright() {
 }
 
 const drawerWidth = 240;
+function createData(normal_range, ThinF4, Temp_Oxid, Etching_Rate) {
+  return { normal_range, ThinF4, Temp_Oxid, Etching_Rate };
+}
+
+const rows = [
+  createData('upper', '680~687', '1294~1348', '185.4~192.9'),
+  createData('lower', '-49.0~151.0', '862.01~871.01', '167.07~167.6')
+
+];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -113,15 +130,47 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
+  boxPaper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   fixedHeight: {
     height: 550,
     overflow: 'hidden'
   },
+  style1: {
+    flexDirection: 'row',
+    overflow: 'hidden',
+    display: 'flex',
+  },
+  box1: {
+    borderColor: 'green',
+    border: '3px solid rgba(0,0,0,0.05)'
+  },
+  box2: {
+    borderColor: 'green',
+    border: '3px solid rgba(0,0,0,0.05)'
+  },
+  box3: {
+    borderColor: 'red',
+    border: '3px solid rgba(0,0,0,0.05)',
+  },
+  table: {
+    maxWidth: 580
+  }
 }));
 
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [borderStyle, setBorderStyle] = useState({
+    borderColor: 'red',
+    border: '3px solid rgba(0,0,0,0.05)'
+  });
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -166,6 +215,7 @@ export default function Dashboard() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
+
         <Divider />
         <List>{mainListItems}</List>
         <Divider />
@@ -188,9 +238,76 @@ export default function Dashboard() {
               </Paper>
             </Grid>
             {/* Recent Orders */}
+
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                {/* <Orders /> */}
+                <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                  path : 12321
+                </Typography>
+                <div className={classes.style1}>
+                  <Grid item xs={12} className={classes.box1}>
+                    <Paper className={classes.boxPaper}>
+                      {/* <Orders /> */}
+                      <AwesomeButton type="primary" size="large" className="button">
+                        <Typography component="h1" variant="h3" color="inherit" noWrap className={classes.title}>
+                          1234
+                      </Typography>
+                      </AwesomeButton>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={12} className={classes.box2}>
+                    <Paper className={classes.boxPaper}>
+                      {/* <Orders /> */}
+                      <AwesomeButton type="primary" size="large">
+                        <Typography component="h1" variant="h3" color="inherit" noWrap className={classes.title}>
+                          41234
+                      </Typography>
+                      </AwesomeButton>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={12} className={classes.box3}>
+                    <Paper className={classes.boxPaper}>
+                      {/* <Orders /> */}
+                      <AwesomeButton type="primary" size="large">
+                        <Typography component="h1" variant="h3" color="inherit" noWrap className={classes.title}>
+                          200
+                      </Typography>
+                      </AwesomeButton>
+                    </Paper>
+                  </Grid>
+                </div>
+                {/* 테이블 표 만들기 */}
+                <div style={{ height: 400, width: '100%' }}>
+                  <TableContainer component={Paper}>
+                    <Table className={classes.table} aria-label="simple table">
+                      <TableHead>
+                        <TableRow className={classes.table}>
+                          <TableCell>정상범위 \ 파라미터 이름</TableCell>
+                          <TableCell align="right">Thin F4</TableCell>
+                          <TableCell align="right">Temp_Oxid</TableCell>
+                          <TableCell align="right">Etching_Rate</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>{rows.map((row) => (
+                        <TableRow key={row.normal_range}>
+                          <TableCell component="th" scope="row">
+                            {row.normal_range}
+                          </TableCell>
+                          <TableCell align="right">
+                            {row.ThinF4}
+                          </TableCell>
+                          <TableCell align="right">
+                            {row.Temp_Oxid}
+                          </TableCell>
+                          <TableCell align="right">
+                            {row.Etching_Rate}
+                          </TableCell>
+                        </TableRow>))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </div>
               </Paper>
             </Grid>
           </Grid>
@@ -198,7 +315,7 @@ export default function Dashboard() {
             <Copyright />
           </Box>
         </Container>
-      </main>
-    </div>
+      </main >
+    </div >
   );
 }

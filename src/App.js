@@ -1,12 +1,15 @@
-import { Button } from "@material-ui/core";
 import React from "react";
 import Dashboard from "./Dashboard";
+import Test3 from "./Test3";
+import "./assets/css/bootstrap.min.css";
+import "./assets/css/style.css";
 
 function App() {
   return (
     <div className="App">
       <div class="container">
-        <Dashboard />
+        <Test3 />
+        {/* <Dashboard /> */}
       </div>
     </div>
   );

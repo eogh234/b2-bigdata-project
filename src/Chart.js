@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles, responsiveFontSizes, useTheme } from '@material-ui/core/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
@@ -116,6 +116,13 @@ const useStyles = makeStyles((theme) => ({
 export default function Chart() {
   const theme = useTheme();
   const classes = useStyles();
+  const [lineColor, setLineColor] = useState(['#ff0000', '#c0c0c0', '#0000ff']);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLineColor(['#00ff00', '#c0c0c0', '#0000ff']);
+    }, 5000);
+  }, [])
 
   return (
     <React.Fragment>
@@ -127,7 +134,7 @@ export default function Chart() {
           <ResponsiveBump
             data={data}
             margin={{ top: 40, right: 60, bottom: 80, left: 60 }}
-            colors={['#ff0000', '#c0c0c0', '#0000ff']}
+            colors={lineColor}
             lineWidth={3}
             activeLineWidth={6}
             inactiveLineWidth={3}
