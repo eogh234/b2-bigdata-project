@@ -106,10 +106,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'red',
 
   },
-  titleContainer: {
-    marginLeft : '38%'
-    
-  },
+
 }));
 
 

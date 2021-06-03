@@ -26,7 +26,7 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import { AwesomeButton } from "react-awesome-button";
 import Chart from './Chart';
-import Deposits from './Deposits';
+import Daily from './Daily';
 import { mainListItems, secondaryListItems } from './listItems';
 
 
@@ -138,6 +138,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center'
   },
   fixedHeight: {
+    height: 450,
+    overflow: 'hidden'
+  },
+  fixedHeight2: {
     height: 550,
     overflow: 'hidden'
   },
@@ -160,6 +164,10 @@ const useStyles = makeStyles((theme) => ({
   },
   table: {
     maxWidth: 580
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   }
 }));
 
@@ -180,6 +188,7 @@ export default function Dashboard() {
   };
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedHeightPaper2 = clsx(classes.paper, classes.fixedHeight2);
 
   return (
     <div className={classes.root}>
@@ -223,19 +232,19 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={4} lg={12} className={classes.headerContainer}>
               <Paper className={fixedHeightPaper}>
+                <Daily />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={8} lg={12}>
+              <Paper className={fixedHeightPaper2}>
+                <Chart />
                 <Chart />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid>
             {/* Recent Orders */}
-
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 {/* <Orders /> */}
