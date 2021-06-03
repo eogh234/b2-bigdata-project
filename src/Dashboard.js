@@ -27,7 +27,6 @@ import React, { useState } from 'react';
 import { AwesomeButton } from "react-awesome-button";
 import Chart from './Chart';
 import Deposits from './Deposits';
-import Test2 from './Test2';
 import { mainListItems, secondaryListItems } from './listItems';
 
 
@@ -171,18 +170,21 @@ export default function Dashboard() {
     borderColor: 'red',
     border: '3px solid rgba(0,0,0,0.05)'
   });
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      {/* <AppBar position="flex" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -196,14 +198,9 @@ export default function Dashboard() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             반도체 공정 실시간 모니터링
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
-      </AppBar>
-      <Drawer
+      </AppBar> */}
+      {/* <Drawer
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -220,7 +217,7 @@ export default function Dashboard() {
         <List>{mainListItems}</List>
         <Divider />
         <List>{secondaryListItems}</List>
-      </Drawer>
+      </Drawer> */}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
@@ -249,7 +246,7 @@ export default function Dashboard() {
                   <Grid item xs={12} className={classes.box1}>
                     <Paper className={classes.boxPaper}>
                       {/* <Orders /> */}
-                      <AwesomeButton type="primary" size="large" className="button">
+                      <AwesomeButton type="primary" size="large">
                         <Typography component="h1" variant="h3" color="inherit" noWrap className={classes.title}>
                           1234
                       </Typography>

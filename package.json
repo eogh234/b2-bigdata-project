@@ -20,6 +20,7 @@
     "react-awesome-button": "^6.5.1",
     "react-dom": "^17.0.2",
     "react-dynamic-charts": "^1.0.5",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "recharts": "^2.0.9",
     "sass": "^1.34.0",

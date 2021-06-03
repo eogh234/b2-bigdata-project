@@ -1,42 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Test3() {
+export default function Home() {
     return (
         <div>
             <header className="item header margin-top-0">
                 <div className="wrapper">
-                    <nav role="navigation" className="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
-                        <div className="container">
-                            <div className="navbar-header">
-                                <button data-target="#navbar-collapse-02" data-toggle="collapse" className="navbar-toggle" type="button">
-                                    <i className="fa fa-bars" />
-                                    <span className="sr-only">Toggle navigation</span>
-                                </button>
-                                <a href="index.html" className="navbar-brand brand">
-                                    <img className="brand" src={require("./assets/images/logo.png").default} alt="" style={{ width: '120px', height: '50px' }} />
-                                </a>
-                            </div>
-                            <div id="navbar-collapse-02" className="collapse navbar-collapse">
-                                <ul className="nav navbar-nav navbar-right">
-                                    <li className="propClone"><a href="index.html">Home</a></li>
-                                    <li className="propClone"><a href="shop.html">Dashboard</a></li>
-                                    {/* <li className="propClone"><a href="product.html">Product</a></li>
-                                    <li className="propClone"><a href="checkout.html">Checkout</a></li>
-                                    <li className="propClone"><a href="contact.html">Contact</a></li> */}
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 text-center">
                                 <div className="text-homeimage">
-                                    <div className="maintext-image" data-scrollreveal="enter top over 1.5s after 0.1s">
-                                        Increase Digital Sales
-                    </div>
-                                    <div className="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.3s">
-                                        Boost revenue with Scorilo
-                    </div>
                                 </div>
                             </div>
                         </div>
@@ -190,9 +163,9 @@ export default function Test3() {
                         <div className="slide-text">
                             <div>
                                 <h2><span className="uppercase">Awesome Support</span></h2>
-                                    <img className="brand" src={require("./assets/images/space.png").default} alt="" style={{ width: '150px', height: '150px' }} />
+                                <img className="brand" src={require("./assets/images/space.png").default} alt="" style={{ width: '150px', height: '150px' }} />
                                 <p>
-                                저희의 기술이 필요하다면 청암로 77 RIST연구 4동으로 </p>
+                                    저희의 기술이 필요하다면 청암로 77 RIST연구 4동으로 </p>
                                 <p>도미노 피자를 들고 또 방문부탁드려요~
                   </p>
                                 <i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" />
@@ -221,7 +194,7 @@ export default function Test3() {
                         <p className="footernote">
                             Please Connect with P&O2
               </p>
-                
+
                         <p>
                             © 2021 포스코의 산소같은 b반 2조<br />
                             <a href="https://ssgfoodingplus.com/fmn101.do?goTo=todayMenu&storeCd=05600">RIST식당</a>
