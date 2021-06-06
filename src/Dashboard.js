@@ -1,33 +1,24 @@
-import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
+import { Button } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
-import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Toolbar from '@material-ui/core/Toolbar';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import clsx from 'clsx';
-import React, { useState } from 'react';
-import { AwesomeButton } from "react-awesome-button";
+import React, { useEffect, useState } from 'react';
 import Chart from './Chart';
 import Daily from './Daily';
-import { mainListItems, secondaryListItems } from './listItems';
+import PostChart from './PostChart';
+import Title from './Title';
+import Color from './Color';
+import { ResponsiveBullet } from '@nivo/bullet'
+import '@grapecity/wijmo.styles/wijmo.css';
+import * as wjGauge from '@grapecity/wijmo.react.gauge';
+import './assets/css/bootstrap.css';
 
 
 function Copyright() {
@@ -51,7 +42,6 @@ function createData(normal_range, ThinF4, Temp_Oxid, Etching_Rate) {
 const rows = [
   createData('upper', '680~687', '1294~1348', '185.4~192.9'),
   createData('lower', '-49.0~151.0', '862.01~871.01', '167.07~167.6')
-
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -142,13 +132,15 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden'
   },
   fixedHeight2: {
-    height: 550,
+    height: 450,
     overflow: 'hidden'
   },
   style1: {
     flexDirection: 'row',
     overflow: 'hidden',
     display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   box1: {
     borderColor: 'green',
@@ -168,11 +160,108 @@ const useStyles = makeStyles((theme) => ({
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-  }
+  },
+  paramContainer: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  paramTable: {
+    height: '100px'
+  },
+  heading: {
+    fontWeight: 'bold',
+    fontSize: '30em'
+  },
+  max: {
+    fontSize: '2rem',
+  },
 }));
+
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: green
+//   }
+// })
+
+const greenTheme = createMuiTheme({
+  palette: {
+    primary: { main: '#61B58F' },
+    secondary: { main: '#61B58F' }
+  },
+});
+
+const redTheme = createMuiTheme({
+  palette: {
+    primary: { main: '#F2726F' },
+    secondary: { main: '#61B58F' }
+  },
+});
 
 export default function Dashboard() {
   const classes = useStyles();
+
+  const [myTheme, setMyTheme] = useState(redTheme);
+
+  const [value1, setValue1] = useState(195);
+
+  const [abnormal, setAbnormal] = useState(10);
+
+  const [paramData, setParamData] = useState([
+    { heading: '수율', sub: '%', max: 100, actual: 85, target: 90, good: 90 },
+  ]);
+
+  function renderSpan(item) {
+    if (item.actual < item.target) {
+      return <span className="glyphicon glyphicon-thumbs-down warning"></span>;
+    }
+    return;
+  }
+  function renderTableTr(item) {
+    return (<tr key={item.heading}>
+      <td>
+        <div className="heading">{item.heading}</div>
+        <div className="sub">{item.sub}</div>
+      </td>
+      <td>
+        {renderSpan(item)}
+      </td>
+      <td>
+        <wjGauge.BulletGraph value={item.actual} target={item.target} max={item.max} bad={item.bad} good={item.good}></wjGauge.BulletGraph>
+      </td>
+      <td>
+        <div className="max">{item.max}</div>
+      </td>
+    </tr>);
+  }
+  function renderTable() {
+    let table = [];
+    paramData.forEach(item => {
+      table.push(renderTableTr(item));
+    });
+    return table;
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAbnormal(4);
+    }, 12000);
+    if (value1 > 186) {
+      setMyTheme(redTheme);
+    }
+  }, [value1])
+
+  const handleClick = (e, value) => {
+    if (value1 >= 100) {
+      if (value === 'green') {
+        setMyTheme(greenTheme);
+        setValue1(186);
+        setParamData([{ heading: '수율', sub: '%', max: 100, actual: 93, target: 90, good: 90 },])
+      } else if (value === 'red') {
+        setMyTheme(redTheme);
+      }
+    }
+  }
+
   const [open, setOpen] = React.useState(true);
   const [borderStyle, setBorderStyle] = useState({
     borderColor: 'red',
@@ -189,7 +278,6 @@ export default function Dashboard() {
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const fixedHeightPaper2 = clsx(classes.paper, classes.fixedHeight2);
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -234,13 +322,17 @@ export default function Dashboard() {
             {/* Chart */}
             <Grid item xs={12} md={4} lg={12} className={classes.headerContainer}>
               <Paper className={fixedHeightPaper}>
-                <Daily />
+                <Daily abnormal={abnormal} />
               </Paper>
             </Grid>
-            <Grid item xs={12} md={8} lg={12}>
+            <Grid item xs={12} md={8} lg={6}>
               <Paper className={fixedHeightPaper2}>
                 <Chart />
-                <Chart />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={8} lg={6}>
+              <Paper className={fixedHeightPaper2}>
+                <PostChart />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
@@ -248,72 +340,36 @@ export default function Dashboard() {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 {/* <Orders /> */}
-                <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                <div className={classes.titleContainer}>
+                  <Title>2 주요 파라미터 조절</Title>
+                </div>
+
+                <Typography component="h1" variant="h4" color="inherit" noWrap className={classes.title}>
                   path : 12321
                 </Typography>
                 <div className={classes.style1}>
-                  <Grid item xs={12} className={classes.box1}>
-                    <Paper className={classes.boxPaper}>
-                      {/* <Orders /> */}
-                      <AwesomeButton type="primary" size="large">
-                        <Typography component="h1" variant="h3" color="inherit" noWrap className={classes.title}>
-                          1234
+                  <Button variant="contained" color="secondary" size="large">
+                    <Typography component="h1" variant="h4" color="inherit" noWrap className={classes.title}>
+                      Thin F4:683
                       </Typography>
-                      </AwesomeButton>
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={12} className={classes.box2}>
-                    <Paper className={classes.boxPaper}>
-                      {/* <Orders /> */}
-                      <AwesomeButton type="primary" size="large">
-                        <Typography component="h1" variant="h3" color="inherit" noWrap className={classes.title}>
-                          41234
+                  </Button>
+
+                  <Button variant="contained" color="secondary" size="large">
+                    <Typography component="h1" variant="h4" color="inherit" noWrap className={classes.title}>
+                      Temp_Oxid:1344
                       </Typography>
-                      </AwesomeButton>
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={12} className={classes.box3}>
-                    <Paper className={classes.boxPaper}>
-                      {/* <Orders /> */}
-                      <AwesomeButton type="primary" size="large">
-                        <Typography component="h1" variant="h3" color="inherit" noWrap className={classes.title}>
-                          200
+                  </Button>
+                  <ThemeProvider theme={myTheme}>
+                    <Button variant="contained" color="primary" onClick={(e) => { handleClick(e, 'green') }} size="large">
+                      <Typography component="h1" variant="h4" color="inherit" noWrap className={classes.title}>
+                        Etching_Rate:{value1}
                       </Typography>
-                      </AwesomeButton>
-                    </Paper>
-                  </Grid>
+                    </Button>
+                  </ThemeProvider>
                 </div>
-                {/* 테이블 표 만들기 */}
-                <div style={{ height: 400, width: '100%' }}>
-                  <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
-                      <TableHead>
-                        <TableRow className={classes.table}>
-                          <TableCell>정상범위 \ 파라미터 이름</TableCell>
-                          <TableCell align="right">Thin F4</TableCell>
-                          <TableCell align="right">Temp_Oxid</TableCell>
-                          <TableCell align="right">Etching_Rate</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>{rows.map((row) => (
-                        <TableRow key={row.normal_range}>
-                          <TableCell component="th" scope="row">
-                            {row.normal_range}
-                          </TableCell>
-                          <TableCell align="right">
-                            {row.ThinF4}
-                          </TableCell>
-                          <TableCell align="right">
-                            {row.Temp_Oxid}
-                          </TableCell>
-                          <TableCell align="right">
-                            {row.Etching_Rate}
-                          </TableCell>
-                        </TableRow>))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                </div>
+                <table className={classes.paramTable}>
+                  {renderTable()}
+                </table>
               </Paper>
             </Grid>
           </Grid>

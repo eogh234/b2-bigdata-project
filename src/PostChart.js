@@ -17,15 +17,15 @@ const data = [
     "data": [
       {
         "x": "1.Oxidation",
-        "y": 1
+        "y": 3
       },
       {
         "x": "2.Photo_Soft",
-        "y": 2
+        "y": 1
       },
       {
         "x": "3.Photo_Litho",
-        "y": 3
+        "y": 2
       },
       {
         "x": "4.Etching",
@@ -43,11 +43,11 @@ const data = [
     "data": [
       {
         "x": "1.Oxidation",
-        "y": 2
+        "y": 1
       },
       {
         "x": "2.Photo_Soft",
-        "y": 3
+        "y": 2
       },
       {
         "x": "3.Photo_Litho",
@@ -68,15 +68,15 @@ const data = [
     "data": [
       {
         "x": "1.Oxidation",
-        "y": 3
+        "y": 2
       },
       {
         "x": "2.Photo_Soft",
-        "y": 1
+        "y": 3
       },
       {
         "x": "3.Photo_Litho",
-        "y": 2
+        "y": 3
       },
       {
         "x": "4.Etching",
@@ -110,22 +110,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Chart() {
+export default function PostChart() {
   const theme = useTheme();
   const classes = useStyles();
   const [lineColor, setLineColor] = useState(['#61B58F', '#61B58F', '#61B58F']);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLineColor(['#F2726F', '#61B58F', '#61B58F']);
-    }, 10000);
+    
   }, [])
 
   return (
     <React.Fragment>
       <div className={classes.root}>
         <div className={classes.titleContainer}>
-          <Title >1-(1) 과부하 Path</Title>
+          <Title>1-(2) 최적화 알고리즘 적용 Path</Title>
         </div>
         <div className={classes.leftContainer}>
           <ResponsiveBump
@@ -169,9 +167,6 @@ export default function Chart() {
               legendOffset: -40
             }}
           />
-        </div>
-        <div className={classes.rightContainer}>
-          {/* <img src={require("./assets/waste.png").default} width='50' height='50' /> */}
         </div>
       </div>
     </React.Fragment>

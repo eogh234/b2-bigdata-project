@@ -11,49 +11,7 @@ import Title from './Title';
 
 ReactFC.fcRoot(FusionCharts, Widgets, FusionTheme);
 
-const chartConfigs = {
-  type: 'angulargauge',
-  width: 500,
-  height: 400,
-  dataFormat: 'json',
-  dataSource: {
-    "chart": {
-      "caption": "반도체 생산량 (chip단위)",
-      "lowerLimit": "0",
-      "upperLimit": "110000",
-      "showValue": "1",
-      "numberSuffix": "개",
-      "theme": "fusion",
-      "showToolTip": "0"
-    },
-    "colorRange": {
-      "color": [
-        {
-          "minValue": "0",
-          "maxValue": "40000",
-          "code": "#F2726F"
-        },
-        {
-          "minValue": "40000",
-          "maxValue": "70000",
-          "code": "#FFC533"
-        },
-        {
-          "minValue": "70000",
-          "maxValue": "110000",
-          "code": "#62B58F"
-        }
-      ]
-    },
-    "dials": {
-      "dial": [
-        {
-          "value": 55000
-        }
-      ]
-    }
-  },
-};
+
 
 function preventDefault(event) {
   event.preventDefault();
@@ -88,16 +46,61 @@ function Clock(props) {
   );
 }
 
-export default function Daily() {
-  const [abnormal, setAbnormal] = useState(10);
+export default function Daily(props) {
+  const [product, setProduct] = useState(1000);
   const [date, setDate] = useState(new Date());
   const classes = useStyles();
 
+  const chartConfigs = {
+    type: 'angulargauge',
+    width: 500,
+    height: 400,
+    dataFormat: 'json',
+    dataSource: {
+      "chart": {
+        "caption": "반도체 생산량 (chip단위)",
+        "lowerLimit": "0",
+        "upperLimit": "110000",
+        "showValue": "1",
+        "numberSuffix": "개",
+        "theme": "fusion",
+        "showToolTip": "0"
+      },
+      "colorRange": {
+        "color": [
+          {
+            "minValue": "0",
+            "maxValue": "40000",
+            "code": "#F2726F"
+          },
+          {
+            "minValue": "40000",
+            "maxValue": "70000",
+            "code": "#FFC533"
+          },
+          {
+            "minValue": "70000",
+            "maxValue": "110000",
+            "code": "#62B58F"
+          }
+        ]
+      },
+      "dials": {
+        "dial": [
+          {
+            "value": product
+          }
+        ]
+      }
+    },
+  };
   useEffect(() => {
     setTimeout(() => {
-      setAbnormal(Math.round(Math.random() * 10 + 1));
+      if (product < 109000) {
+        setProduct(product + 270);
+      }
     }, 1000);
-  }, [abnormal, date])
+  }, [product, props.abnormal, date])
 
   return (
     <div>
@@ -113,7 +116,7 @@ export default function Daily() {
             총 불량률
         </Typography>
           <Typography component="h1" variant="h2">
-            {abnormal}%
+            {props.abnormal}%
         </Typography>
         </div>
 

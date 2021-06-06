@@ -43,7 +43,7 @@ class App extends Component {
                     </ul>
                   </div>
                 </div>
-              </nav>
+              </nav> 
             </div>
           </header>
           <switch>

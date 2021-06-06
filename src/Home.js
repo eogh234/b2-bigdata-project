@@ -94,7 +94,7 @@ export default function Home() {
                                 </div>
                                 <div className="product-details">
                                     <a href="#">
-                                        <h1>그룹장님 ???? </h1>
+                                        <h1>이태호 그룹장님</h1>
                                     </a>
 
                                 </div>
@@ -118,7 +118,7 @@ export default function Home() {
                                 </div>
                                 <div className="product-details">
                                     <a href="#">
-                                        <h1>배강국 교수님 쨩쨩</h1>
+                                        <h1>배강국 교수님</h1>
                                     </a>
 
                                 </div>
@@ -142,7 +142,7 @@ export default function Home() {
                                 </div>
                                 <div className="product-details">
                                     <a href="#">
-                                        <h1>송홍준 교수님 쨩쨩</h1>
+                                        <h1>송홍준 교수님</h1>
                                     </a>
 
                                 </div>

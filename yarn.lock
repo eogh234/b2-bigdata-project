@@ -1347,6 +1347,41 @@
     "@fusioncharts/features" "^1.4.0"
     "@fusioncharts/utils" "^1.4.0"
 
+"@grapecity/wijmo.gauge@5.20211.794":
+  version "5.20211.794"
+  resolved "https://registry.yarnpkg.com/@grapecity/wijmo.gauge/-/wijmo.gauge-5.20211.794.tgz#b0001698fd0ac82a993008aff9982713cb1564e7"
+  integrity sha512-QehQ0JoJvGd18HnYHOyYh0/xwODPkzodpXtrGZMaIToHB42LSZIzGznLD2cc5/iP2/GrdL4mItdKWptorXeRCg==
+  dependencies:
+    "@grapecity/wijmo" "5.20211.794"
+
+"@grapecity/wijmo.react.base@5.20211.794":
+  version "5.20211.794"
+  resolved "https://registry.yarnpkg.com/@grapecity/wijmo.react.base/-/wijmo.react.base-5.20211.794.tgz#ec87cf031e2f1362cf61e3bd1ff825d5578d0bc6"
+  integrity sha512-8cnhPSQ3hYqUb4GxgVfFHMX+35mJHeH2loFinm1QfsqagkEnq2S+0a6h3LZVqtf37eZnIhIQMfC/+oi9o7CEGw==
+  dependencies:
+    "@grapecity/wijmo" "5.20211.794"
+
+"@grapecity/wijmo.react.gauge@^5.20211.794":
+  version "5.20211.794"
+  resolved "https://registry.yarnpkg.com/@grapecity/wijmo.react.gauge/-/wijmo.react.gauge-5.20211.794.tgz#78e38cdfd51029b5f8851d308435867d4fd992a9"
+  integrity sha512-cFviH51W6Sdv4c1xbN5FYItDa2CKoapM6RA1Sdc6VI/gcXQLPdyQKi7Rcc0kXjN5NywCi1RsA95rAPUAtW6klg==
+  dependencies:
+    "@grapecity/wijmo" "5.20211.794"
+    "@grapecity/wijmo.gauge" "5.20211.794"
+    "@grapecity/wijmo.react.base" "5.20211.794"
+
+"@grapecity/wijmo.styles@5.20211.794":
+  version "5.20211.794"
+  resolved "https://registry.yarnpkg.com/@grapecity/wijmo.styles/-/wijmo.styles-5.20211.794.tgz#192e99d53fdeed0a56073fda21725af62fbecd17"
+  integrity sha512-ZGlLOgSLXNIiajcXKJPagT4D+khAvfktEDFIOz/y0PspjhiYwv/34ZxGLIjak3Zk3vscoPmCKSamljLqsMD+Pg==
+
+"@grapecity/wijmo@5.20211.794":
+  version "5.20211.794"
+  resolved "https://registry.yarnpkg.com/@grapecity/wijmo/-/wijmo-5.20211.794.tgz#79350ed170e52d0b964bd7b3acd25a6ee773ea05"
+  integrity sha512-hr98muPGduBN/rQGKPxjZay6WwQWJlfx6rKiTxnBIrgBt0Cly22Vx4J12WjRNXl73kOXw1lX519k17WKxIBe0g==
+  dependencies:
+    "@grapecity/wijmo.styles" "5.20211.794"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -1668,6 +1703,18 @@
     d3-format "^1.4.4"
     d3-time "^1.0.11"
     d3-time-format "^2.1.3"
+
+"@nivo/bullet@^0.70.1":
+  version "0.70.1"
+  resolved "https://registry.yarnpkg.com/@nivo/bullet/-/bullet-0.70.1.tgz#e4821fe0bff6fa89dbeef97fb882af88c9a9b259"
+  integrity sha512-+r8vJ77zsAt4jZz59yjEz/WWa4dz6OsjAM0JqDTcnhZw3SIoawP42WkM6PXUYqO6VpO4AtyH2AvFOSETQKeLaQ==
+  dependencies:
+    "@nivo/axes" "0.70.1"
+    "@nivo/colors" "0.70.1"
+    "@nivo/legends" "0.70.1"
+    "@nivo/tooltip" "0.70.1"
+    "@react-spring/web" "9.1.2"
+    d3-scale "^3.2.3"
 
 "@nivo/bump@^0.70.1":
   version "0.70.1"
@@ -12627,6 +12674,11 @@ wide-align@^1.1.0:
   integrity sha512-QGkOQc8XL6Bt5PwnsExKBPuMKBxnGxWWW3fU55Xt4feHozMUhdUMaBCk290qpm/wG5u/RSKzwdAC4i51YigihA==
   dependencies:
     string-width "^1.0.2 || 2"
+
+wijmo@^5.20211.794:
+  version "5.20211.794"
+  resolved "https://registry.yarnpkg.com/wijmo/-/wijmo-5.20211.794.tgz#ad33c88edc02bc576a6e9ec41e38cf1387c33077"
+  integrity sha512-wZjN6Q/+DfUy80KcBcukkX0onuXvWZpsQKIwTk/cj/P0EabKzskCI0gc105lGmEF7krKgOSutS0z4v95B9jTtw==
 
 word-wrap@^1.2.3, word-wrap@~1.2.3:
   version "1.2.3"
