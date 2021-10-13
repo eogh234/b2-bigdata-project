@@ -1,3 +1,33 @@
+# POSCO / POSTECH 청년 AI / Big Data 아카데미 14기
+### B반 2조 빅데이터 프로젝트
+반도체 공정 운전조건 최적화 및 경로 추천 시스템 개발로 불량률 최소화
+
+## 데이터 분석 방법
+### 탐색적 데이터 분석
+- Bar Chart / Pie Chart : 범주형 변수 요소의 고유 값 확인
+- Boxplot / Histogram : 공정 변수들의 분포 및 이상치 확인
+- Scatter Plot / Trend Chart : 불량 개수와 공정 변수들의 선형성 확인
+
+### Model
+- Logistic Regression
+- Decision Tree
+- **Random Forest (FINAL SELECT MODEL)**
+- Gradient Boosting
+- XG Boost
+- C관리도
+- Chi-square Test
+- 2 Proportion Test
+
+## Sample Web
+![homepage](https://user-images.githubusercontent.com/45709140/137072230-2b258150-8b4d-4c2a-b26f-85f7feb0b772.png)
+
+***
+
+![dashboard](https://user-images.githubusercontent.com/45709140/137072309-de8935fa-b384-4c60-862d-a6343b318df7.png)
+
+***
+
+![dashboard1](https://user-images.githubusercontent.com/45709140/137072313-9e136209-e430-4485-ab75-c43fd48dde1f.png)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
